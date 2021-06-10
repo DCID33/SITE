@@ -1,0 +1,1 @@
+xcopy /y /E "C:\Users\DC\Documents\WordpressSites\SITE1" "C:\Users\DC\Documents\GitHub\SITE"
