@@ -34,10 +34,9 @@
 
 <h2>Cases Per 100k by State</h2>
 
-<div class="box">
-   <p align="center"><iframe src="USACasesPer100K.html" frameborder="0" scrolling="no" width="75%" height="100%" align="center"> </iframe>
+<div class="maps" onclick="document.getElementById('iframe').style.pointerEvents= 'auto'" onmouseleave="document.getElementById('iframe').style.pointerEvents= 'none'">
+  <p align="center"><iframe id="iframe" src="USACasesPer100K.html" frameborder="0" width="75%" height="100%" align="center"> </iframe>
 </div>
-
 &nbsp;
 
 <h2>State Trends</h2>
@@ -51,6 +50,14 @@
 &nbsp
 
 <script src="js/scripts.js"></script>
+
+<script>
+onclick="document.getElementById('iframe').style.pointerEvents= 'auto'"
+</script>
+
+<script>
+onmouseleave="document.getElementById('iframe').style.pointerEvents= 'none'"
+</script>
 
 </body>
 </html>
