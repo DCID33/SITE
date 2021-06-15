@@ -67,7 +67,7 @@
         layout(title = "US Daily Covid Cases", margin = margin)
       
       #USDailyNewPOS1
-      withr::with_dir('~/WordpressSites/SITE1', saveWidget(DailyNewPOS1, file="DailyNewPOS1.html",selfcontained = FALSE)) 
+      withr::with_dir('~/Sites/SITE1', saveWidget(DailyNewPOS1, file="DailyNewPOS1.html",selfcontained = FALSE)) 
     }  
     
     # WORLD ACTUALS - DEATHS
@@ -129,7 +129,7 @@
         layout(title = "US Daily Covid Deaths", margin = margin)
       
       #USDailyCovidDeaths
-      withr::with_dir('~/WordpressSites/SITE1', saveWidget(DailyNewDEATH1, file="DailyNewDEATH1.html",selfcontained = FALSE)) 
+      withr::with_dir('~/Sites/SITE1', saveWidget(DailyNewDEATH1, file="DailyNewDEATH1.html",selfcontained = FALSE)) 
     }
   }
 
@@ -143,7 +143,7 @@
     library(htmlwidgets)
     options(scipen=999)
     
-    Population <- read_csv("Population.csv")
+    Population <- read_csv("Sites/SITE1/_files/Population.csv")
     dave1="https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv"
     dave1<-read_csv(url(dave1))
     dave1<-inner_join(Population, dave1, by = c("State1" = "state"))
@@ -182,7 +182,7 @@
         layout(title = "MA Daily Covid Cases", margin = margin)
       
       #MADailyNewPOS1
-      withr::with_dir('~/WordpressSites/SITE1', saveWidget(MADailyNewPOS1, file="MADailyNewPOS1.html",selfcontained = FALSE)) 
+      withr::with_dir('~/Sites/SITE1', saveWidget(MADailyNewPOS1, file="MADailyNewPOS1.html",selfcontained = FALSE)) 
       
       
       
@@ -212,7 +212,7 @@
         layout(title = "MA Daily Covid Deaths", margin = margin)
       
       #MADailyNewDEATH1
-      withr::with_dir('~/WordpressSites/SITE1', saveWidget(MADailyNewDEATH1, file="MADailyNewDEATH1.html",selfcontained = FALSE)) 
+      withr::with_dir('~/Sites/SITE1', saveWidget(MADailyNewDEATH1, file="MADailyNewDEATH1.html",selfcontained = FALSE)) 
     }    
   }
   
@@ -238,7 +238,7 @@ library(leaflet.extras)
 options(scipen=999)
   
 #State Growth Rate of Daily Cases
-PollsCheck <- read_csv("PollsCheck.csv")
+PollsCheck <- read_csv("Sites/SITE1/_files/PollsCheck.csv")
 #Population <- read_csv("Documents/Population.csv")
 #dave1="https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv"
 #dave1<-read_csv(url(dave1))
@@ -738,7 +738,7 @@ USACasesPer100k<-leaflet(options = leafletOptions(attributionControl=FALSE,minZo
                                                        padding = "3px 8px"),
                                               textsize = "15px",
                                               direction = "auto"))
-withr::with_dir('~/WordpressSites/SITE1', saveWidget(USACasesPer100k, file="USACasesPer100k.html",selfcontained = FALSE))
+withr::with_dir('~/Sites/SITE1', saveWidget(USACasesPer100k, file="USACasesPer100k.html",selfcontained = FALSE))
 
 States<-ggplot(data = Testme2, aes(x = date, y = CasesPer100K)) +
   labs(title = "",y = "", x = "")+ 
@@ -747,7 +747,7 @@ States<-ggplot(data = Testme2, aes(x = date, y = CasesPer100K)) +
   facet_wrap(facets = vars(State1))+
   theme(plot.title = element_text(hjust = 0.5),
         axis.text = element_text( size = 7))
-ggsave("States.jpeg", path="~/WordpressSites/SITE1/",plot = States, dpi=700)
+ggsave("States.jpeg", path="~/Sites/SITE1/",plot = States, dpi=700)
 }
   
 
@@ -776,7 +776,7 @@ options(scipen=999)
 Town<-readOGR("towns/TOWNS_POLYM.shp")
 Town1<-spTransform(Town, CRS("+init=epsg:4326"))
 #TownTest<-spTransform(Town, CRS("+init=epsg:4326"))
-CovidMaster <- read_excel("CovidMaster.xlsx",sheet = "CovidMaster")
+CovidMaster <- read_excel("Sites/SITE1/_files/CovidMaster.xlsx",sheet = "CovidMaster")
 Town2<-geo_join(Town1,CovidMaster,"TOWN_ID","Number1")
 pal<-colorNumeric("Reds",domain=Town2$TwoWeekPer1000avg)
 
@@ -807,7 +807,7 @@ pal<-colorNumeric("Reds",domain=Town2$TwoWeekPer1000avg)
                                                          padding = "3px 8px"),
                                             textsize = "15px",
                                             direction = "auto"))
-  withr::with_dir('~/WordpressSites/SITE1', saveWidget(MATownsPer1K, file="MATownsPer1K.html",selfcontained = FALSE))
+  withr::with_dir('~/Sites/SITE1', saveWidget(MATownsPer1K, file="MATownsPer1K.html",selfcontained = FALSE))
 }
   
   
@@ -823,8 +823,8 @@ library(rgdal)
 library(readr)
 library(reshape2)
   
-CovidMaster <- read_excel("CovidMaster.xlsx",sheet = "CovidMaster")
-CovidMasterStats <- read_excel("CovidMaster.xlsx",sheet = "Stats")
+CovidMaster <- read_excel("Sites/SITE1/_files/CovidMaster.xlsx",sheet = "CovidMaster")
+CovidMasterStats <- read_excel("Sites/SITE1/_files/CovidMaster.xlsx",sheet = "Stats")
   
 CovidPly<- subset(CovidMaster,County=="Plymouth")
 CovidPly<-CovidPly %>% select(Town, c(Week2:ncol(.)))
@@ -846,7 +846,7 @@ CovidPly<-ggplot(data = CovidPly, aes(x = Date, y = value)) +
     facet_wrap(facets = vars(Town),nrow = 4)+
     theme(plot.title = element_text(hjust = 0.5),
           axis.text = element_text( size = 7))
-ggsave("CovidPly.jpeg", path="~/WordpressSites/SITE1/",plot = CovidPly, dpi=300)
+ggsave("CovidPly.jpeg", path="~/Sites/SITE1/",plot = CovidPly, dpi=300)
 }
 
 CovidBar<-ggplot(data = CovidBar, aes(x = Date, y = value)) +
@@ -856,7 +856,7 @@ CovidBar<-ggplot(data = CovidBar, aes(x = Date, y = value)) +
     facet_wrap(facets = vars(Town),nrow = 3)+
     theme(plot.title = element_text(hjust = 0.5),
           axis.text = element_text( size = 7))
-ggsave("CovidBar.jpeg", path="~/WordpressSites/SITE1/",plot = CovidBar,dpi=300)
+ggsave("CovidBar.jpeg", path="~/Sites/SITE1/",plot = CovidBar,dpi=300)
 
 
 }
@@ -874,7 +874,7 @@ library(readr)
 library(reshape2)
   
 options(scipen=999)
-CovidMaster <- read_excel("CovidMaster.xlsx",sheet = "CovidMaster")
+CovidMaster <- read_excel("Sites/SITE1/_files/CovidMaster.xlsx",sheet = "CovidMaster")
 Covid99<-CovidMaster %>% select(Town, County, TwoWeekPer1000avg, TotalInfectedPer100, PopDen,KidPop,Trump, Biden,MHI,Percent20s)
 Covid99<-Covid99 %>%
   group_by(County) %>%
@@ -897,7 +897,7 @@ ply<-ggdotchart(subset(Covid99,County=="Plymouth"), x = "Town", y = "TotalInfect
 )+
   ggpar(theme(plot.title = element_text(hjust = 0.5),legend.position = "none",axis.title.x = element_blank(),axis.title.y = element_blank()))
   
-ggsave("ply.jpeg", path="~/WordpressSites/SITE1/",dpi=900, device="jpeg")
+ggsave("ply.jpeg", path="~/Sites/SITE1/",dpi=900, device="jpeg")
   
   
 bar<-ggdotchart(subset(Covid99,County=="Barnstable"), x = "Town", y = "TotalInfectedPer100",
@@ -916,6 +916,6 @@ bar<-ggdotchart(subset(Covid99,County=="Barnstable"), x = "Town", y = "TotalInfe
 )+
 ggpar(theme(plot.title = element_text(hjust = 0.5),legend.position = "none",axis.title.x = element_blank(),axis.title.y = element_blank()))
   
-ggsave("bar.jpeg", path="~/WordpressSites/SITE1/",dpi=900, device="jpeg") 
+ggsave("bar.jpeg", path="~/Sites/SITE1/",dpi=900, device="jpeg") 
 }
 }
