@@ -917,5 +917,11 @@ bar<-ggdotchart(subset(Covid99,County=="Barnstable"), x = "Town", y = "TotalInfe
 ggpar(theme(plot.title = element_text(hjust = 0.5),legend.position = "none",axis.title.x = element_blank(),axis.title.y = element_blank()))
   
 ggsave("bar.jpeg", path="~/Sites/SITE1/",dpi=900, device="jpeg") 
+
+####ValueBoxs
+
+#rmarkdown::render("valueboxes.Rmd")
+#this runs from the main directory
+
 }
 }
