@@ -8,52 +8,70 @@
 
 <link rel="stylesheet" href="styles.css">
 
-
+<div class="header">
+<h1>Massachusetts Covid Report</h1>
+</div> 
 </head>
+
+
 
 <body>
 
 
-<h1>MA COVID REPORT</h1>
-  <p>Data Science</p>
+
 
 <div class="topnav">
   <a class="active" href="index.html">MA</a>
   <a href="USMAP.html">US</a>
 </div> 
+&nbsp
 
 
 <div class="box">
-  <iframe src="MADailyNewPOS1.html" frameborder="0" scrolling="no" width="50%" height="450" align="left"></iframe>
+  <iframe src="TestDB.html" frameborder="0" scrolling="no" width="100%" height="30%" align="center"></iframe>
+</div>  
+  
+
+
+<div class="box">
+  <iframe src="MADailyNewPOS1.html" frameborder="0" scrolling="no" width="50%" height="75%" align="left"></iframe>
 </div>
 
 
 <div class="box">
-  <iframe src="MADailyNewDEATH1.html" frameborder="0" scrolling="no" width="50%" height="450" align="right"></iframe>
+  <iframe src="MADailyNewDEATH1.html" frameborder="0" scrolling="no" width="50%" height="75%" align="right"></iframe>
 </div>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-<h2>CASES PER 1000 RESIDENTS BY TOWN</h2>
+
+&nbsp
+
+
+<div class="w3-container">
+<h2>Cases Per 1000 Residents by Town</h2>
+</div>
+
+
 
 <div class="maps" onclick="document.getElementById('iframe').style.pointerEvents= 'auto'" onmouseleave="document.getElementById('iframe').style.pointerEvents= 'none'">
-  <p align="center"><iframe id="iframe" src="MATownsPer1K.html" frameborder="0" width="75%" height="100%" align="center"> </iframe>
+  <p align="center"><iframe id="iframe" src="MATownsPer1K.html" frameborder="0" width="90%" height="100%" align="center"> </iframe>
 </div>
 
 &nbsp
 
+<div class="w3-container">
+  <h2>County Stats</h2>
 
-  <h2>COUNTY STATS</h2>
 
-<div class="w3-bar w3-black">
+<div class="topnav">
   <button class="w3-bar-item w3-button" onclick="openCity('Plymouth');openCity1('Plymouth1')">Plymouth</button>
   <button class="w3-bar-item w3-button" onclick="openCity('Barnstable');openCity1('Barnstable1')">Barnstable</button>
-  <button class="w3-bar-item w3-button" onclick="openCity('Plymouth');openCity1('Plymouth1')">Plymouth</button>
+</div>
 </div>
 
 &nbsp
 
-<div class="center">
+
 <div class="row">
   <div class="column">
 <div class="w3-container">
@@ -71,10 +89,6 @@
 </div>
 
 
-<div id="Plymouth" class="w3-container city" style="display:none">
-  <img src="CovidPly.jpeg" width="100%" height="100%">
-</div>
-
 </div>
 
 
@@ -91,11 +105,6 @@
 
 <div id="Barnstable1" class="w3-container city1" style="display:none">
   <img src="bar.jpeg" width="100%" height="100%">
-</div>
-
-
-<div id="Plymouth1" class="w3-container city1" style="display:none">
-  <img src="ply.jpeg" width="100%" height="100%">
 </div>
 
 
