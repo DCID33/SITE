@@ -6,7 +6,7 @@ xcopy /y "C:\Users\DC\Documents\Sites\SITE1\_r_code\valueboxes.html" "C:\Users\D
 del "C:\Users\DC\Documents\Sites\SITE1\_r_code\valueboxes.html"
 xcopy /y /E "C:\Users\DC\Documents\Sites\SITE1" "C:\Users\DC\Documents\GitHub\SITE"
 
-#cd \Users\DC\Documents\GitHub\SITE
-#git add .
-#git commit -m "update"
-#git push
+cd \Users\DC\Documents\GitHub\SITE
+git add .
+git commit -m "update"
+git push
