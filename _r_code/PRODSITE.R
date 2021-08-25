@@ -837,6 +837,12 @@ CovidBar<-CovidBar %>% select(Town, c(Week2:ncol(.)))
 CovidBar<-CovidBar[1:(length(CovidBar)-3)]
 CovidBar<-melt(CovidBar)
 CovidBar<-inner_join(CovidBar,CovidMasterStats)
+
+CovidMid<- subset(CovidMaster,County=="Middlesex")
+CovidMid<-CovidMid %>% select(Town, c(Week2:ncol(.)))
+CovidMid<-CovidMid[1:(length(CovidMid)-3)]
+CovidMid<-melt(CovidMid)
+CovidMid<-inner_join(CovidMid,CovidMasterStats)
   
 {  
 CovidPly<-ggplot(data = CovidPly, aes(x = Date, y = value)) +
@@ -858,6 +864,16 @@ CovidBar<-ggplot(data = CovidBar, aes(x = Date, y = value)) +
           axis.text = element_text( size = 7))
 ggsave("CovidBar.jpeg", path="~/Sites/SITE1/",plot = CovidBar,dpi=300)
 
+{  
+  CovidMid<-ggplot(data = CovidMid, aes(x = Date, y = value)) +
+    labs(title = "",y = "", x = "")+ 
+    geom_line(color = "steelblue", size = .5) +
+    geom_point(color="steelblue", size=.5) + 
+    facet_wrap(facets = vars(Town),nrow = 4)+
+    theme(plot.title = element_text(hjust = 0.5),
+          axis.text = element_text( size = 7))
+  ggsave("CovidMid.jpeg", path="~/Sites/SITE1/",plot = CovidMid, dpi=300)
+}
 
 }
 
@@ -917,6 +933,26 @@ bar<-ggdotchart(subset(Covid99,County=="Barnstable"), x = "Town", y = "TotalInfe
 ggpar(theme(plot.title = element_text(hjust = 0.5),legend.position = "none",axis.title.x = element_blank(),axis.title.y = element_blank()))
   
 ggsave("bar.jpeg", path="~/Sites/SITE1/",dpi=900, device="jpeg") 
+
+
+mid<-ggdotchart(subset(Covid99,County=="Middlesex"), x = "Town", y = "TotalInfectedPer100",
+                color = "Group",
+                palette = c("#00AFBB", "#E7B800"),
+                sorting = "descending",
+                add = "segments",
+                rotate = FALSE,
+                group = "Group",
+                dot.size = 9,
+                #title= "Middlesex County",
+                label = round(subset(Covid99,County=="Middlesex")$TotalInfectedPer100,digits=1),
+                font.label = list(color = "black", size = 9, 
+                                  vjust = 0.5),
+                ggtheme = theme_pubr(),
+)+
+  ggpar(theme(plot.title = element_text(hjust = 0.5),legend.position = "none",axis.title.x = element_blank(),axis.title.y = element_blank()))
+
+ggsave("mid.jpeg", path="~/Sites/SITE1/",dpi=900, device="jpeg") 
+
 
 ####ValueBoxs
 
