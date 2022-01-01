@@ -154,9 +154,11 @@
     MA10<-subset(MA5,date>'2020-12-31')
     MA7<-subset(MA,DailyNewDeath>-1)
     MA11<-subset(MA7,date>'2020-12-31')
+    MA5$MA7CASES<-(MA5$DailyNewPOS+(lag(MA5$DailyNewPOS,n=1))+(lag(MA5$DailyNewPOS,n=2))+(lag(MA5$DailyNewPOS,n=3))+(lag(MA5$DailyNewPOS,n=4))+(lag(MA5$DailyNewPOS,n=5))+(lag(MA5$DailyNewPOS,n=6)))/7
+    MA7$MA7DEATHS<-(MA7$DailyNewDeath+(lag(MA7$DailyNewDeath,n=1))+(lag(MA7$DailyNewDeath,n=2))+(lag(MA7$DailyNewDeath,n=3))+(lag(MA7$DailyNewDeath,n=4))+(lag(MA7$DailyNewDeath,n=5))+(lag(MA7$DailyNewDeath,n=6)))/7
     
     {
-      MADailyNewPOS1 <- plot_ly(MA5, x = ~date, y = ~DailyNewPOS, type = 'bar')
+      MADailyNewPOS1 <- plot_ly(MA5, x = ~date, y = ~DailyNewPOS, type = 'bar',name = 'Total Cases')
       MADailyNewPOS1 <- MADailyNewPOS1 %>% layout(
         title = "Mass Daily New Covid Cases",
         xaxis = list(
@@ -180,6 +182,9 @@
         layout(xaxis=list(fixedrange=TRUE)) %>% 
         layout(yaxis=list(fixedrange=TRUE)) %>%
         layout(title = "MA Daily Covid Cases", margin = margin)
+     
+      MADailyNewPOS1 <- MADailyNewPOS1 %>% add_trace(MA5, x = ~date, y = ~MA7CASES, type = 'scatter', mode = 'lines',name = '7 Day Avg')
+      MADailyNewPOS1 <- MADailyNewPOS1 %>% layout(showlegend = FALSE)
       
       #MADailyNewPOS1
       withr::with_dir('~/Sites/SITE1', saveWidget(MADailyNewPOS1, file="MADailyNewPOS1.html",selfcontained = FALSE)) 
@@ -210,6 +215,9 @@
         layout(xaxis=list(fixedrange=TRUE)) %>% 
         layout(yaxis=list(fixedrange=TRUE)) %>%
         layout(title = "MA Daily Covid Deaths", margin = margin)
+      
+      MADailyNewDEATH1 <- MADailyNewDEATH1 %>% add_trace(MA5, x = ~date, y = ~MA7DEATHS, type = 'scatter', mode = 'lines',name = '7 Day Avg')
+      MADailyNewDEATH1 <- MADailyNewDEATH1 %>% layout(showlegend = FALSE)
       
       #MADailyNewDEATH1
       withr::with_dir('~/Sites/SITE1', saveWidget(MADailyNewDEATH1, file="MADailyNewDEATH1.html",selfcontained = FALSE)) 
